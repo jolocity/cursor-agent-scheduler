@@ -1,0 +1,143 @@
+{
+  "name": "cursor-agent-scheduler",
+  "displayName": "Cursor Agent Scheduler",
+  "description": "Schedule and run Cursor AI agents automatically using cron schedules",
+  "version": "1.0.0",
+  "publisher": "your-publisher-name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/cursor-agent-scheduler"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Machine Learning"
+  ],
+  "keywords": [
+    "cursor",
+    "ai",
+    "agent",
+    "scheduler",
+    "automation",
+    "cron"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentSchedules.add",
+        "title": "Agent Schedules: Add Schedule",
+        "icon": "$(add)"
+      },
+      {
+        "command": "agentSchedules.runNow",
+        "title": "Agent Schedules: Run Now",
+        "icon": "$(play)"
+      },
+      {
+        "command": "agentSchedules.edit",
+        "title": "Agent Schedules: Edit"
+      },
+      {
+        "command": "agentSchedules.enable",
+        "title": "Agent Schedules: Enable"
+      },
+      {
+        "command": "agentSchedules.disable",
+        "title": "Agent Schedules: Disable"
+      },
+      {
+        "command": "agentSchedules.viewRuns",
+        "title": "Agent Schedules: View Run History"
+      },
+      {
+        "command": "agentSchedules.reloadCommands",
+        "title": "Agent Schedules: Reload Commands",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "agentSchedules.testExecution",
+        "title": "Agent Schedules: Test Execution"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "agentSchedules",
+          "name": "Agent Schedules",
+          "when": "true"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "agentSchedules.add",
+          "when": "view == agentSchedules",
+          "group": "navigation"
+        },
+        {
+          "command": "agentSchedules.reloadCommands",
+          "when": "view == agentSchedules",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "agentSchedules.runNow",
+          "when": "view == agentSchedules",
+          "group": "inline"
+        },
+        {
+          "command": "agentSchedules.edit",
+          "when": "view == agentSchedules",
+          "group": "1_actions"
+        },
+        {
+          "command": "agentSchedules.enable",
+          "when": "view == agentSchedules && viewItem == schedule-disabled",
+          "group": "2_toggle"
+        },
+        {
+          "command": "agentSchedules.disable",
+          "when": "view == agentSchedules && viewItem == schedule-enabled",
+          "group": "2_toggle"
+        },
+        {
+          "command": "agentSchedules.viewRuns",
+          "when": "view == agentSchedules",
+          "group": "3_history"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "cron-parser": "^4.9.0",
+    "uuid": "^9.0.0",
+    "js-yaml": "^4.1.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/uuid": "^9.0.8"
+  }
+}
