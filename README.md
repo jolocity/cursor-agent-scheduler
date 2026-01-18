@@ -13,10 +13,52 @@ A VS Code extension for [Cursor](https://cursor.sh) that lets you schedule and a
 
 ## Installation
 
-1. Clone this repository
-2. Run `npm install`
-3. Run `npm run compile`
-4. Press F5 to launch the extension in development mode
+### Option 1: Install from VSIX Package (Recommended)
+
+1. Download the latest `.vsix` file from [Releases](https://github.com/jolocity/cursor-agent-scheduler/releases)
+2. Open Cursor
+3. Open Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`)
+4. Run: `Extensions: Install from VSIX...`
+5. Select the downloaded `.vsix` file
+6. Reload Cursor when prompted
+
+### Option 2: Install from Source (Development)
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/jolocity/cursor-agent-scheduler.git
+   cd cursor-agent-scheduler
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Compile the extension:
+   ```bash
+   npm run compile
+   ```
+
+4. Package the extension:
+   ```bash
+   npm run package
+   ```
+   This creates a `.vsix` file in the project root.
+
+5. Install the VSIX in Cursor:
+   - Open Command Palette (`Cmd+Shift+P`)
+   - Run: `Extensions: Install from VSIX...`
+   - Select the generated `.vsix` file
+
+### Option 3: Development Mode
+
+For active development:
+
+1. Clone and install (steps 1-2 from Option 2)
+2. Open the project in Cursor
+3. Press `F5` to launch Extension Development Host
+4. The extension will be active in the new window
 
 ## Usage
 
@@ -124,15 +166,29 @@ The extension uses Cursor's internal VS Code commands to execute prompts:
 # Install dependencies
 npm install
 
-# Compile
+# Compile TypeScript
 npm run compile
 
-# Watch mode
+# Watch mode (auto-compile on changes)
 npm run watch
 
-# Run extension
-Press F5 in VS Code/Cursor
+# Package extension as .vsix
+npm run package
+
+# Run extension in development mode
+Press F5 in Cursor
 ```
+
+## Building for Distribution
+
+To create a distributable `.vsix` package:
+
+```bash
+npm install
+npm run package
+```
+
+This will create `cursor-agent-scheduler-1.0.0.vsix` in the project root, which can be shared and installed in Cursor.
 
 ## License
 

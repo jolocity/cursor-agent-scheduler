@@ -3,10 +3,10 @@
   "displayName": "Cursor Agent Scheduler",
   "description": "Schedule and run Cursor AI agents automatically using cron schedules",
   "version": "1.0.0",
-  "publisher": "your-publisher-name",
+  "publisher": "jolocity",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/cursor-agent-scheduler"
+    "url": "https://github.com/jolocity/cursor-agent-scheduler.git"
   },
   "engines": {
     "vscode": "^1.74.0"
@@ -122,7 +122,9 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "prepackage": "npm run compile"
   },
   "dependencies": {
     "cron-parser": "^4.9.0",
@@ -138,6 +140,7 @@
     "eslint": "^8.0.0",
     "typescript": "^5.0.0",
     "@types/js-yaml": "^4.0.9",
-    "@types/uuid": "^9.0.8"
+    "@types/uuid": "^9.0.8",
+    "@vscode/vsce": "^2.22.0"
   }
 }
